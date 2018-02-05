@@ -1,0 +1,26 @@
+@import '../../layouts/colors';
+.inner-nav {
+  margin-top: 50px;
+  font-weight: 100;
+  text-align: right;
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      line-height: 2;
+      margin-bottom: 20px;
+      max-width: 130px;
+      a {
+        color: $gray-700;
+        font-size: 18px;
+        transition: all 0.3s ease-out;
+        display: block;
+        &:hover {
+          color: $red;
+          transform: translateX(5px);
+        }
+      }
+
+    }
+  }
+}

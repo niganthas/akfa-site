@@ -1,0 +1,82 @@
+@import './colors.scss';
+
+h1 {
+  font-size: 3rem;
+}
+
+.navbar {
+  background: $gray-100;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  .nav-link {
+    color: $gray-900;
+
+    font-size: 1.2rem;
+  }
+
+  .nav-item {
+    margin-right: 25px;
+    padding-top: 5px;
+    &:hover {
+      a {
+        color: $red;
+      }
+      animation: pulse 0.5s;
+    }
+    &.active {
+      a {
+        color: $gray-600;
+      }
+    }
+  }
+}
+
+.home-link {
+  img {
+    width: 140px;
+    padding: 0;
+    margin: 0 50px 0 0 ;
+  }
+}
+
+.home-link:hover {
+  color: $red;
+}
+
+.inner-page {
+  //margin-top: 40px;
+}
+
+.aboutIndexPage {
+
+}
+
+.innerHeader {
+  background: url("/img/about_bg.jpg") no-repeat;
+  height: 350px;
+  padding-top: 110px;
+  text-align: center;
+  //border-top: 2px solid $red;
+  .inner-title {
+    background: rgba(202,30,30,.8);
+    color: $white;
+    padding: 30px 50px;
+    font-weight: 100;
+    margin-bottom: 50px;
+    display: inline-block;
+    font-size: 48px;
+  }
+}
+
+.content-wrp {
+  margin-top: 50px;
+  font-weight: 100;
+  font-size: 1.2rem;
+    p {
+      font-size: 1.2rem;
+    }
+  h1 {
+    margin-bottom: 50px;
+  }
+}
+
