@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'AKFA Group of companies ',
+    title: 'AKFA Group of companies',
     description: 'Gatsby starter for bootstrap a blog',
     siteUrl: 'https://gatstrap.netlify.com',
     author: 'jaxx2104',

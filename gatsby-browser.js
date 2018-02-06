@@ -1,16 +1,18 @@
 /* eslint-disable react/prop-types */
 /* globals window CustomEvent */
-import React, { createElement } from "react"
-import { Transition } from "react-transition-group"
-import createHistory from "history/createBrowserHistory"
+import React, { createElement } from 'react'
+import { Transition } from 'react-transition-group'
+import createHistory from 'history/createBrowserHistory'
 
-import getTransitionStyle from "./src/utils/getTransitionStyle"
+import getTransitionStyle from './src/utils/getTransitionStyle'
 
-const timeout = 250
+const timeout = 300
 const historyExitingEventType = `history::exiting`
 
 const getUserConfirmation = (pathname, callback) => {
-  const event = new CustomEvent(historyExitingEventType, { detail: { pathname } })
+  const event = new CustomEvent(historyExitingEventType, {
+    detail: { pathname },
+  })
   window.dispatchEvent(event)
   setTimeout(() => {
     callback(true)
@@ -29,10 +31,11 @@ class ReplaceComponentRenderer extends React.Component {
   }
 
   listenerHandler(event) {
-    const nextPageResources = this.props.loader.getResourcesForPathname(
-      event.detail.pathname,
-      nextPageResources => this.setState({ nextPageResources })
-    ) || {}
+    const nextPageResources =
+      this.props.loader.getResourcesForPathname(
+        event.detail.pathname,
+        nextPageResources => this.setState({ nextPageResources })
+      ) || {}
     this.setState({ exiting: true, nextPageResources })
   }
 
@@ -62,18 +65,18 @@ class ReplaceComponentRenderer extends React.Component {
     }
     return (
       <Transition {...transitionProps}>
-      {
-        (status) => createElement(this.props.pageResources.component, {
-          ...this.props,
-          ...this.props.pageResources.json,
-          transition: {
-            status,
-            timeout,
-            style: getTransitionStyle({ status, timeout }),
-            nextPageResources: this.state.nextPageResources,
-          },
-        })
-      }
+        {status =>
+          createElement(this.props.pageResources.component, {
+            ...this.props,
+            ...this.props.pageResources.json,
+            transition: {
+              status,
+              timeout,
+              style: getTransitionStyle({ status, timeout }),
+              nextPageResources: this.state.nextPageResources,
+            },
+          })
+        }
       </Transition>
     )
   }

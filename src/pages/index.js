@@ -34,5 +34,19 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export const pageQuery = graphql`
+  query IndexPageQuery {
+    site {
+      siteMetadata {
+        title
+        description
+        url: siteUrl
+        author
+        twitter
+        adsense
+      }
+    }
+  }
+`
 
+export default BlogIndex

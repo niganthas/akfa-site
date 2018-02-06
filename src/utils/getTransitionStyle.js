@@ -2,14 +2,17 @@ const getTransitionStyles = timeout => {
   return {
     entering: {
       opacity: 0,
+      transform: `translateX(-20px)`,
     },
     entered: {
-      transition: `opacity ${timeout}ms ease-in-out`,
+      transition: `all ${timeout}ms ease-in-out`,
       opacity: 1,
+      transform: `translateX(0)`,
     },
     exiting: {
-      transition: `opacity ${timeout}ms ease-in-out`,
+      transition: `all ${timeout}ms ease-in-out`,
       opacity: 0,
+      transform: `translateX(20px)`,
     },
   }
 }

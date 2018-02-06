@@ -10,8 +10,8 @@ h1 {
   padding-bottom: 15px;
   .nav-link {
     color: $gray-900;
-
-    font-size: 1.2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
   }
 
   .nav-item {
@@ -35,7 +35,7 @@ h1 {
   img {
     width: 140px;
     padding: 0;
-    margin: 0 50px 0 0 ;
+    margin: 0 50px 0 0;
   }
 }
 
@@ -48,17 +48,16 @@ h1 {
 }
 
 .aboutIndexPage {
-
 }
 
 .innerHeader {
-  background: url("/img/about_bg.jpg") no-repeat;
+  background: url('/img/about_bg.jpg') no-repeat;
   height: 350px;
   padding-top: 110px;
   text-align: center;
   //border-top: 2px solid $red;
   .inner-title {
-    background: rgba(202,30,30,.8);
+    background: rgba(202, 30, 30, 0.8);
     color: $white;
     padding: 30px 50px;
     font-weight: 100;
@@ -72,11 +71,15 @@ h1 {
   margin-top: 50px;
   font-weight: 100;
   font-size: 1.2rem;
-    p {
-      font-size: 1.2rem;
-    }
+  p {
+    font-size: 1.2rem;
+  }
   h1 {
     margin-bottom: 50px;
   }
 }
 
+.mainMenuBtn {
+  text-align: center;
+  animation: fadeInDown 0.3s ease-out forwards;
+}

@@ -9,18 +9,42 @@
     li {
       line-height: 2;
       margin-bottom: 20px;
-      max-width: 130px;
+      max-width: 220px;
+
+      &.active {
+        a {
+          &:before {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      }
       a {
+        position: relative;
         color: $gray-700;
-        font-size: 18px;
+        font-size: 2rem;
         transition: all 0.3s ease-out;
         display: block;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          right: 220px;
+          height: 2px;
+          background: $red;
+          opacity: 0;
+          width: 1000px;
+          transition: all 0.3s ease-out;
+          top: calc(50% - 1px);
+          transform: translateX(-220px);
+        }
+
         &:hover {
           color: $red;
           transform: translateX(5px);
         }
       }
-
     }
   }
 }

@@ -3,11 +3,20 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { siteMetadata } from '../../../gatsby-config'
 
+import transition from '../../decorators/transition'
+
+const anEv = false
+
 class Profile extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     const pathPrefix =
       process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
     const title = 'Profile'
+
     return (
       <div>
         <Helmet
@@ -35,7 +44,8 @@ class Profile extends React.Component {
           ]}
         />
         <section className="text-center">
-          <div className="container">
+          <button onClick={this.props.change}>trans</button>
+          <div style={this.props.transitionStyle} className="container">
             <img
               src={pathPrefix + '/img/profile.jpg'}
               alt="jaxx2104"
@@ -267,9 +277,7 @@ class Profile extends React.Component {
               </div>
               <div className="col-md-6 text-center align-middle">
                 <h2 className="section-heading">Degree Works</h2>
-                <p>
-                  過去の制作は<a href="https://old.jaxx2104.info/">こちら</a>
-                </p>
+                <p />
               </div>
             </div>
           </div>
@@ -279,4 +287,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile
+export default transition(Profile, Profile.state)

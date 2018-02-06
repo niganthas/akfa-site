@@ -10,7 +10,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   return new Promise((resolve, reject) => {
     const pages = []
     const blogPost = path.resolve('./src/templates/blog-post.js')
-      resolve(
+    resolve(
       graphql(
         `
           {
@@ -47,17 +47,19 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 }
 
 exports.onCreatePage = async ({ page, boundActionCreators }) => {
-    const { createPage } = boundActionCreators;
+  const { createPage } = boundActionCreators
 
-    return new Promise((resolve, reject) => {
-        console.log(page.path);
-        if (page.path == '/') {
-            // It's assumed that `landingPage.js` exists in the `/layouts/` directory
-            page.layout = "welcome";
+  return new Promise((resolve, reject) => {
+    console.log(page.path)
+    if (page.path == '/') {
+      page.layout = 'welcome'
+    }
 
-            // Update the page.
-            createPage(page);
-        }
-        resolve();
-    });
-};
+    if (page.path.indexOf('/about') >= 0) {
+      page.layout = 'about'
+    }
+
+    createPage(page)
+    resolve()
+  })
+}

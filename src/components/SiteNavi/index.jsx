@@ -8,13 +8,15 @@ class SiteNavi extends React.Component {
       <nav className="navbar navbar-expand flex-column flex-md-row">
         <div className="container">
           <Link className="text-center home-link" to="/">
-            <img src="/img/logo.svg" alt=""/>
+            <img src="/img/logo.svg" alt="" />
           </Link>
           <div className="navbar-nav-scroll">
             <ul className="navbar-nav bd-navbar-nav flex-row">
               <li
                 className={
-                  location.pathname === '/about/' ? 'nav-item active' : 'nav-item'
+                  location.pathname.indexOf('/about/') >= 0
+                    ? 'nav-item active'
+                    : 'nav-item'
                 }
               >
                 <Link to="/about/" className="nav-link">
@@ -23,9 +25,7 @@ class SiteNavi extends React.Component {
               </li>
               <li
                 className={
-                  location.pathname === '//'
-                    ? 'nav-item active'
-                    : 'nav-item'
+                  location.pathname === '//' ? 'nav-item active' : 'nav-item'
                 }
               >
                 <Link to="/profile/" className="nav-link">
@@ -33,22 +33,18 @@ class SiteNavi extends React.Component {
                 </Link>
               </li>
               <li
-                  className={
-                      location.pathname === '//'
-                          ? 'nav-item active'
-                          : 'nav-item'
-                  }
+                className={
+                  location.pathname === '//' ? 'nav-item active' : 'nav-item'
+                }
               >
                 <Link to="/profile/" className="nav-link">
                   Вакансии
                 </Link>
               </li>
               <li
-                  className={
-                      location.pathname === '//'
-                          ? 'nav-item active'
-                          : 'nav-item'
-                  }
+                className={
+                  location.pathname === '//' ? 'nav-item active' : 'nav-item'
+                }
               >
                 <Link to="/profile/" className="nav-link">
                   Партнерство
