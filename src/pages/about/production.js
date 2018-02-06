@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
+const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
+
 const aboutProduction = ({ transition, location, data }) => {
   const site = get(data, 'site.siteMetadata')
   return (
