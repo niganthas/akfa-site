@@ -11,7 +11,7 @@ const aboutAd = ({ transition, location, data }) => {
       <div className="content-wrp">
         <h1>Реклама</h1>
         <p>
-          <img src="http://benkam.be/uploads/img/profile.jpg" alt="" />
+          <img src={pathPrefix + '/img/IMS.jpg'} alt="" />
         </p>
       </div>
     </div>

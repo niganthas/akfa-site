@@ -11,7 +11,7 @@ const aboutProduction = ({ transition, location, data }) => {
       <div className="content-wrp">
         <h1>Производство</h1>
         <p>
-          <img src="http://benkam.be/uploads/img/IMS.jpg" alt="" />
+          <img src={pathPrefix + '/img/mission.jpg'} alt="" />
         </p>
       </div>
     </div>
