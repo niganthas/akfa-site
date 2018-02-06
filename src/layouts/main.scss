@@ -83,3 +83,61 @@ h1 {
   text-align: center;
   animation: fadeInDown 0.3s ease-out forwards;
 }
+
+.profile-wrp {
+  position: relative;
+  .profileNaviWrp {
+    overflow-y: scroll;
+    position: fixed;
+    left: 0;
+    width: 380px;
+    z-index: 5;
+    bottom: 0;
+    top: 70px;
+    border-right: 2px dashed $gray-100;
+  }
+
+  .profilePage {
+    margin-left: 380px;
+    font-weight: 100;
+    p {
+      font-size: 1.1rem;
+    }
+
+    h3 {
+      background: $red;
+      color: $white;
+      padding: 20px 50px;
+      font-size: 2rem;
+      font-weight: 100;
+      margin-bottom: 50px;
+    }
+  }
+
+  .profile-img {
+    //max-width: 50%;
+  }
+
+  .profileIntroTxt {
+    padding: 20% 30px;
+    p {
+      line-height: 2;
+    }
+  }
+}
+
+.profile-nav {
+  text-align: center;
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      padding: 30px;
+      a {
+        color: $gray-600;
+        font-weight: 100;
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

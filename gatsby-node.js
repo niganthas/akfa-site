@@ -59,6 +59,10 @@ exports.onCreatePage = async ({ page, boundActionCreators }) => {
       page.layout = 'about'
     }
 
+    if (page.path.indexOf('/profiles') >= 0) {
+      page.layout = 'profile'
+    }
+
     createPage(page)
     resolve()
   })
