@@ -41,16 +41,16 @@ class IndexPageEn extends React.Component {
             <nav>
               <ul>
                 <li>
-                  <Link to="/ru/about/">About company</Link>
+                  <Link to="/en/about/mission/">About company</Link>
                 </li>
                 <li>
-                  <Link to="/ru/production/">Production</Link>
+                  <Link to="/en/production/">Production</Link>
                 </li>
                 <li>
-                  <Link to="/ru/vakansy/">Career</Link>
+                  <Link to="/en/vakansy/">Career</Link>
                 </li>
                 <li>
-                  <Link to="/ru/partner/">Partnership</Link>
+                  <Link to="/en/partner/">Partnership</Link>
                 </li>
               </ul>
             </nav>
@@ -59,16 +59,16 @@ class IndexPageEn extends React.Component {
             <nav>
               <ul>
                 <li>
-                  <Link to="/en/about/">О компании</Link>
+                  <Link to="/ru/about/">О компании</Link>
                 </li>
                 <li>
-                  <Link to="/en/about/">Продукция</Link>
+                  <Link to="/ru/about/">Продукция</Link>
                 </li>
                 <li>
-                  <Link to="/en/about/">Вакансии</Link>
+                  <Link to="/ru/about/">Вакансии</Link>
                 </li>
                 <li>
-                  <Link to="/en/about/">Партнерство</Link>
+                  <Link to="/ru/about/">Партнерство</Link>
                 </li>
               </ul>
             </nav>

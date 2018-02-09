@@ -23,7 +23,7 @@ class SiteNavi extends React.Component {
                   url.indexOf('about') >= 1 ? 'nav-item active' : 'nav-item'
                 }
               >
-                <Link to={`/${langKey}/about/`} className="nav-link">
+                <Link to={`/${langKey}/about/mission/`} className="nav-link">
                   <FormattedMessage id="aboutCompany" />
                 </Link>
               </li>

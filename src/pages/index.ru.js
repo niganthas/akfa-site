@@ -41,7 +41,7 @@ class IndexPageRu extends React.Component {
             <nav>
               <ul>
                 <li>
-                  <Link to="/ru/about/">О компании</Link>
+                  <Link to="/ru/about/mission/">О компании</Link>
                 </li>
                 <li>
                   <Link to="/ru/production/">Продукция</Link>
@@ -59,7 +59,7 @@ class IndexPageRu extends React.Component {
             <nav>
               <ul>
                 <li>
-                  <Link to="/en/about/">Kompaniya</Link>
+                  <Link to="/en/about/mission/">Kompaniya</Link>
                 </li>
                 <li>
                   <Link to="/en/about/">Produksiya</Link>
