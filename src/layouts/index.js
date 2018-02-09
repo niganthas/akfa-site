@@ -45,7 +45,9 @@ class Template extends React.Component {
               { name: 'keywords', content: 'sample, something' },
             ]}
           />
-          {url !== homeLink ? <SiteNavi url={url} langs={langs} /> : null}
+          {url !== homeLink ? (
+            <SiteNavi langKey={langKey} url={this.props.location.pathname} />
+          ) : null}
           {children()}
         </div>
       </IntlProvider>
