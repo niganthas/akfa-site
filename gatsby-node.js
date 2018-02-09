@@ -1,25 +1,21 @@
 const _ = require('lodash')
 const Promise = require('bluebird')
 const path = require('path')
-const select = require('unist-util-select')
-const fs = require('fs-extra')
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+  const { createPage, createRedirect } = boundActionCreators
 
   return new Promise((resolve, reject) => {
     const pages = []
-    const blogPost = path.resolve('./src/templates/blog-post.js')
     resolve(
       graphql(
         `
           {
-            allMarkdownRemark(limit: 1000) {
+            allContentfulAboutPage {
               edges {
                 node {
-                  frontmatter {
-                    path
-                  }
+                  slug
+                  node_locale
                 }
               }
             }
@@ -32,38 +28,31 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
 
         // Create blog posts pages.
-        _.each(result.data.allMarkdownRemark.edges, edge => {
+        _.each(result.data.allContentfulAboutPage.edges, edge => {
+          const nodeLocal = edge.node.node_locale.substr(0, 2)
+          const pagePath = `/${nodeLocal}/about/${edge.node.slug}/`
+          const AboutTemplate = path.resolve(
+            './src/templates/about-' + nodeLocal + '.js'
+          )
+
           createPage({
-            path: edge.node.frontmatter.path,
-            component: blogPost,
+            path: pagePath,
+            component: AboutTemplate,
+            layout: 'about',
             context: {
-              path: edge.node.frontmatter.path,
+              slug: edge.node.slug,
             },
           })
+          if (edge.node.slug == 'mission') {
+            createRedirect({
+              fromPath: `/${nodeLocal}/about/`,
+              isPermanent: true,
+              redirectInBrowser: true,
+              toPath: pagePath,
+            })
+          }
         })
       })
     )
-  })
-}
-
-exports.onCreatePage = async ({ page, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
-
-  return new Promise((resolve, reject) => {
-    console.log(page.path)
-    if (page.path == '/') {
-      page.layout = 'welcome'
-    }
-
-    if (page.path.indexOf('/about') >= 0) {
-      page.layout = 'about'
-    }
-
-    if (page.path.indexOf('/profiles') >= 0) {
-      page.layout = 'profile'
-    }
-
-    createPage(page)
-    resolve()
   })
 }

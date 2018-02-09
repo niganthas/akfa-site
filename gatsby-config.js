@@ -1,3 +1,5 @@
+const languages = require('./src/data/languages')
+
 module.exports = {
   siteMetadata: {
     title: 'AKFA Group of companies',
@@ -6,6 +8,7 @@ module.exports = {
     author: 'jaxx2104',
     twitter: 'jaxx2104',
     adsense: '',
+    languages,
   },
   pathPrefix: '/',
   plugins: [
@@ -69,6 +72,25 @@ module.exports = {
         trackingId: '',
       },
     },
+
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: 'zdbsx7pdevs8',
+        accessToken:
+          '56938074caf586f2d724ad9bf3119c79031a1b8779dc1bbea0c48a122dcc7ecb',
+      },
+    },
+
+    {
+      resolve: 'gatsby-plugin-i18n',
+      options: {
+        langKeyForNull: 'any',
+        langKeyDefault: languages.defaultLangKey,
+        useLangKeyLayout: true,
+      },
+    },
+
     'gatsby-plugin-catch-links',
     'gatsby-plugin-netlify',
     'gatsby-plugin-offline',

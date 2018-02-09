@@ -1,52 +1,44 @@
 import React from 'react'
-import Link from 'gatsby-link'
-import get from 'lodash/get'
-import sortBy from 'lodash/sortBy'
-import Helmet from 'react-helmet'
-import LazyLoad from 'react-lazyload'
+import graphql from 'graphql'
+import { getUserLangKey } from 'ptz-i18n'
+import { withPrefix } from 'gatsby-link'
 
-import SitePost from '../components/SitePost'
+class RedirectIndex extends React.PureComponent {
+  constructor(args) {
+    super(args)
 
-class BlogIndex extends React.Component {
+    // Skip build, Browsers only
+    if (typeof window !== 'undefined') {
+      const { langs, defaultLangKey } = args.data.site.siteMetadata.languages
+      const langKey = getUserLangKey(langs, defaultLangKey)
+      const homeUrl = withPrefix(`/${langKey}/`)
+
+      // I don`t think this is the best solution
+      // I would like to use Gatsby Redirects like:
+      // https://github.com/gatsbyjs/gatsby/tree/master/examples/using-redirects
+      // But Gatsby Redirects are static, they need to be specified at build time,
+      // This redirect is dynamic, It needs to know the user browser language.
+      // Any ideias? Join the issue: https://github.com/angeloocana/gatsby-starter-default-i18n/issues/4
+      window.___history.replace(homeUrl)
+    }
+  }
+
   render() {
-    const pageLinks = []
-    const site = get(this, 'props.data.site.siteMetadata')
-
-    return (
-      <div>
-        <Helmet
-          title={get(site, 'title')}
-          meta={[
-            { name: 'twitter:card', content: 'summary' },
-            { name: 'twitter:site', content: `@${get(site, 'twitter')}` },
-            { property: 'og:title', content: get(site, 'title') },
-            { property: 'og:type', content: 'website' },
-            { property: 'og:description', content: get(site, 'description') },
-            { property: 'og:url', content: get(site, 'url') },
-            {
-              property: 'og:image',
-              content: `${get(site, 'url')}/img/profile.jpg`,
-            },
-          ]}
-        />
-      </div>
-    )
+    return <div />
   }
 }
 
+export default RedirectIndex
+
 export const pageQuery = graphql`
-  query IndexPageQuery {
+  query IndexMainQuery {
     site {
       siteMetadata {
-        title
-        description
-        url: siteUrl
-        author
-        twitter
-        adsense
+        languages {
+          defaultLangKey
+          langs
+        }
       }
     }
   }
 `
-
-export default BlogIndex

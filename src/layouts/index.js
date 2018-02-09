@@ -3,17 +3,19 @@ import Link from 'gatsby-link'
 import emergence from 'emergence.js'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import { StickyContainer, Sticky } from 'react-sticky'
 
-import InnerNavi from '../components/InnerNavi'
 import { siteMetadata } from '../../gatsby-config'
 import SiteNavi from '../components/SiteNavi'
 
-import './gatstrap.scss'
+import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n'
+import { IntlProvider } from 'react-intl'
+import 'intl'
+
+import '../styles/gatstrap.scss'
 import 'animate.css/animate.css'
 import 'prismjs/themes/prism-okaidia.css'
 import 'font-awesome/css/font-awesome.css'
-import './main.scss'
+import '../styles/main.scss'
 
 class Template extends React.Component {
   componentDidMount() {
@@ -21,33 +23,32 @@ class Template extends React.Component {
   }
 
   componentDidUpdate() {
-    emergence.init()
+    // emergence.init()
   }
 
   render() {
-    const { location, children, data } = this.props
+    const { location, children, data, i18nMessages } = this.props
     const site = get(data, 'site.siteMetadata')
 
+    const url = location.pathname
+    const { langs, defaultLangKey } = data.site.siteMetadata.languages
+    const langKey = getCurrentLangKey(langs, defaultLangKey, url)
+    const homeLink = `/${langKey}/`
+
     return (
-      <div>
-        <Helmet
-          title={get(site, 'title')}
-          meta={[
-            { name: 'twitter:card', content: 'summary' },
-            { name: 'twitter:site', content: `@${get(site, 'twitter')}` },
-            { property: 'og:title', content: get(site, 'title') },
-            { property: 'og:type', content: 'website' },
-            { property: 'og:description', content: get(site, 'description') },
-            { property: 'og:url', content: get(site, 'url') },
-            {
-              property: 'og:image',
-              content: `${get(site, 'url')}/img/profile.jpg`,
-            },
-          ]}
-        />
-        <SiteNavi title={siteMetadata.title} {...this.props} />
-        {children()}
-      </div>
+      <IntlProvider locale={langKey} messages={i18nMessages}>
+        <div>
+          <Helmet
+            title={get(site, 'title')}
+            meta={[
+              { name: 'description', content: 'Sample' },
+              { name: 'keywords', content: 'sample, something' },
+            ]}
+          />
+          {url !== homeLink ? <SiteNavi url={url} langs={langs} /> : null}
+          {children()}
+        </div>
+      </IntlProvider>
     )
   }
 }
@@ -62,6 +63,10 @@ export const pageQuery = graphql`
         author
         twitter
         adsense
+        languages {
+          defaultLangKey
+          langs
+        }
       }
     }
   }

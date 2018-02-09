@@ -9,11 +9,11 @@ import ProfileNavi from '../components/ProfileNavi'
 import { siteMetadata } from '../../gatsby-config'
 import SiteNavi from '../components/SiteNavi'
 
-import './gatstrap.scss'
+import '../styles/gatstrap.scss'
 import 'animate.css/animate.css'
 import 'prismjs/themes/prism-okaidia.css'
 import 'font-awesome/css/font-awesome.css'
-import './main.scss'
+import '../styles/main.scss'
 
 const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
 
