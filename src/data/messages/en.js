@@ -5,7 +5,9 @@ module.exports = {
   ourMission: 'Our mission',
   production: 'Production',
   products: 'Products',
-  vacancies: 'Vacancies',
+  vacancies: 'Career',
   partnership: 'Parntership',
+  contacts: 'Contacts',
+  news: 'News',
   ad: 'ad',
 }

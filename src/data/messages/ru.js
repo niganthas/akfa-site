@@ -7,5 +7,7 @@ module.exports = {
   products: 'Продукция',
   vacancies: 'Вакансии',
   partnership: 'Партнерство',
+  contacts: 'Контакты',
+  news: 'Новости',
   ad: 'Реклама',
 }

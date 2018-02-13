@@ -101,5 +101,6 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-twitter',
     'gatsby-transformer-sharp',
+    'gatsby-plugin-nprogress',
   ],
 }

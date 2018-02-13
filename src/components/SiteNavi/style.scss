@@ -1,14 +1,15 @@
 @import '../../styles/colors';
 
 .navbar {
-  background: $gray-100;
-  padding-top: 10px;
   padding-bottom: 15px;
-  animation: flipInX 0.5s forwards;
+  animation: fadeIn 0.5s forwards ease-out;
+  padding: 40px 20px !important;
   .nav-link {
-    color: $gray-900;
-    font-weight: bold;
-    font-size: 1.1rem;
+    color: $gray-800;
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
   }
 
   .nav-item {
@@ -18,7 +19,7 @@
       a {
         color: $red;
       }
-      animation: pulse 0.5s;
+      animation: pulse 0.22s ease-out;
     }
     &.active {
       a {
@@ -32,7 +33,7 @@
     list-style: none;
     li {
       display: inline-block;
-      margin-left: 10px;
+      margin: 0 20px;
       a {
         font-weight: 100;
         color: $gray-600;
@@ -40,5 +41,12 @@
         padding-bottom: 2px;
       }
     }
+  }
+
+  .menu-button {
+    margin-top: 12px;
+    opacity: 0;
+    animation: fadeInRight 0.3s 0.5s forwards ease-out;
+    margin-left: 60px;
   }
 }

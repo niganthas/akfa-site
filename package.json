@@ -12,7 +12,7 @@
     "gatsby-plugin-i18n": "^0.4.1",
     "gatsby-plugin-manifest": "^1.0.10",
     "gatsby-plugin-netlify": "^1.0.11",
-    "gatsby-plugin-nprogress": "^1.0.9",
+    "gatsby-plugin-nprogress": "^1.0.12",
     "gatsby-plugin-offline": "^1.0.12",
     "gatsby-plugin-preact": "^1.0.14",
     "gatsby-plugin-react-helmet": "^2.0.3",
@@ -32,11 +32,14 @@
     "gatsby-transformer-sharp": "^1.6.16",
     "intl": "^1.2.5",
     "lodash": "^4.17.5",
+    "react-hamburger-button": "0.0.1",
     "react-helmet": "^5.2.0",
     "react-intl": "^2.4.0",
     "react-lazyload": "^2.3.0",
+    "react-slick": "^0.18.0",
     "react-sticky": "^6.0.1",
-    "react-transition-group": "^2.2.1"
+    "react-transition-group": "^2.2.1",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "animate.css": "^3.5.2",
