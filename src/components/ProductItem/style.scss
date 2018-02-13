@@ -1,0 +1,57 @@
+@import '../../styles/colors.scss';
+
+.slick-active {
+  .product-item {
+    .product-inner {
+      .product-img {
+        transform: translateX(0px);
+      }
+      .product-desc {
+        .sub-desc {
+          transform: translateX(0px);
+        }
+      }
+    }
+  }
+}
+
+.product-item {
+  height: 600px;
+  padding: 100px 0;
+  .product-inner {
+    background: $blue;
+    height: 400px;
+    //box-shadow: 0 0 80px rgba(30, 150, 200, 0.5);
+    color: $white;
+    position: relative;
+
+    .product-desc {
+      padding: 50px;
+      width: 50%;
+      h4 {
+        font-size: 4rem;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .sub-desc {
+        transform: translateX(30px);
+        transition: transform 0.3s 0.4s ease-out;
+        font-size: 20px;
+        font-weight: 100;
+      }
+    }
+
+    .product-img {
+      transition: transform 0.3s 0.4s ease-out;
+      transform: translateX(30px);
+      height: 600px;
+      position: absolute;
+      right: 50px;
+      top: -100px;
+      img {
+        height: 100%;
+      }
+    }
+  }
+}
