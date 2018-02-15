@@ -36,6 +36,7 @@
     "react-helmet": "^5.2.0",
     "react-intl": "^2.4.0",
     "react-lazyload": "^2.3.0",
+    "react-preload": "git+https://github.com/malikid/react-preload.git",
     "react-slick": "^0.18.0",
     "react-sticky": "^6.0.1",
     "react-transition-group": "^2.2.1",

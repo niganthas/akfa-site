@@ -1,6 +1,6 @@
 import React from 'react'
+import Preload from 'react-preload'
 import Helmet from 'react-helmet'
-
 let stylesStr
 if (process.env.NODE_ENV === 'production') {
   try {
@@ -9,6 +9,8 @@ if (process.env.NODE_ENV === 'production') {
     console.log(e)
   }
 }
+
+const loader = <div>Loading...</div>
 
 export default class HTML extends React.Component {
   render() {
@@ -46,6 +48,7 @@ export default class HTML extends React.Component {
             id="___gatsby"
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
+
           {this.props.postBodyComponents}
           <script
             async

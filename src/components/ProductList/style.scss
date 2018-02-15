@@ -2,6 +2,21 @@
 @import '~slick-carousel/slick/slick.css';
 .product-list {
   width: 100%;
-  //padding: 0 15% 0 5%;
-  overflow-x: hidden;
+  position: relative;
+
+  .slick-slider {
+    margin-top: -50px;
+    .slick-arrow {
+      position: absolute;
+      right: 10px;
+      bottom: 140px;
+      width: 42px;
+      height: 42px;
+      text-align: center;
+      z-index: 5;
+      &.slick-next {
+        bottom: 210px;
+      }
+    }
+  }
 }

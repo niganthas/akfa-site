@@ -66,7 +66,7 @@ class SiteNavi extends React.Component {
                 height={20}
                 strokeWidth={2}
                 color="#495057"
-                animationDuration={0.5}
+                animationDuration={0.3}
               />
             </div>
 

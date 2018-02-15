@@ -1,9 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component, Children } from 'react'
 import PropTypes from 'prop-types'
 
 import Slider from 'react-slick'
 
 import './style.scss'
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div className={className} style={{ ...style }} onClick={onClick}>
+      <i className="fa fa-4x fa-angle-left" />
+    </div>
+  )
+}
+
+function NextArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div className={className} style={{ ...style }} onClick={onClick}>
+      <i className="fa fa-4x fa-angle-right" />
+    </div>
+  )
+}
 
 class ProductList extends Component {
   constructor(props) {
@@ -15,16 +33,23 @@ class ProductList extends Component {
     animated: false,
   }
 
+  onEnter() {}
+
   render() {
     const settings = {
-      dots: true,
+      dots: false,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />,
     }
+    // const childs = Children.map(this.props.children, (args) => {args.props.onEnter((id)=>{console.log('---', id)})});
 
-    const items = this.props.children.map(child => <div>{child}</div>)
+    const items = this.props.children.map((child, index) => (
+      <div key={index}>{child}</div>
+    ))
 
     return (
       <div className="product-list">

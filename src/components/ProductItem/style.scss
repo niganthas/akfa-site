@@ -16,22 +16,28 @@
 }
 
 .product-item {
-  height: 600px;
-  padding: 100px 0;
+  padding: 80px;
+  transition: all 0.2s ease-out;
   .product-inner {
     background: $blue;
-    height: 400px;
     //box-shadow: 0 0 80px rgba(30, 150, 200, 0.5);
     color: $white;
     position: relative;
+    transition: all 0.2s ease-out;
+    height: 370px;
 
     .product-desc {
-      padding: 50px;
+      padding: 100px 20px 100px 100px;
+      color: $gray-800;
+      transition: all 0.2s ease-out;
+
       width: 50%;
       h4 {
         font-size: 4rem;
         font-weight: bold;
         text-transform: uppercase;
+        letter-spacing: 5px;
+        line-height: 0.9;
       }
 
       .sub-desc {
@@ -40,18 +46,69 @@
         font-size: 20px;
         font-weight: 100;
       }
+
+      .btn-wrp {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        button {
+          background: $red;
+          color: #fff;
+          border: none;
+          width: 100px;
+          height: 100px;
+          outline: none !important;
+          i {
+            transition: transform 0.2s ease-out;
+          }
+          &:hover {
+            i {
+              transform: translateX(7px);
+            }
+          }
+        }
+      }
     }
 
     .product-img {
-      transition: transform 0.3s 0.4s ease-out;
+      transition: all 0.2s ease-out;
       transform: translateX(30px);
-      height: 600px;
+      height: 450px;
+      max-width: 500px;
       position: absolute;
-      right: 50px;
-      top: -100px;
+      right: 10px;
+      top: 20px;
       img {
         height: 100%;
       }
+    }
+  }
+
+  &.active {
+    z-index: 55;
+    position: relative;
+    height: auto;
+    padding: 0px;
+    .product-inner {
+      padding: 100px 50px;
+      height: 600px;
+      .product-img {
+        right: 50px;
+        top: 100px;
+        height: 500px;
+      }
+      .product-desc {
+        padding: 0 40px;
+      }
+    }
+  }
+
+  .img-product {
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    img {
+      margin: 0 auto;
     }
   }
 }
