@@ -44,6 +44,7 @@ class ProductList extends Component {
       slidesToScroll: 1,
       nextArrow: <NextArrow />,
       prevArrow: <PrevArrow />,
+      beforeChange: this.beforeChange,
     }
     // const childs = Children.map(this.props.children, (args) => {args.props.onEnter((id)=>{console.log('---', id)})});
 

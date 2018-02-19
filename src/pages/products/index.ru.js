@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import ProductList from '../../components/ProductList'
 import ProductItem from '../../components/ProductItem'
 import Link from 'gatsby-link'
+import Slider from 'react-slick'
 
+let activeItem = null
+let isAnimate = false
 const data = [
   {
     id: '1',
@@ -32,17 +34,95 @@ const data = [
   },
 ]
 
+function PrevArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div
+      className={`${className} ${activeItem == null ? '' : 'active'}`}
+      style={{ ...style }}
+      onClick={onClick}
+    >
+      <i className="fa fa-4x fa-angle-left" />
+    </div>
+  )
+}
+
+function NextArrow(props) {
+  const { className, style, onClick } = props
+
+  return (
+    <div
+      className={`${className} ${activeItem == null ? '' : 'active'}`}
+      style={{ ...style }}
+      onClick={onClick}
+    >
+      <i className="fa fa-4x fa-angle-right" />
+    </div>
+  )
+}
+
 class Products extends Component {
+  state = {
+    activeItem: null,
+    isAnimate: false,
+    current: 1,
+    isAnimate: false,
+  }
+
+  onItemEnter(id) {
+    this.setState({ activeItem: this.state.activeItem == id ? null : id })
+  }
+
   ProductElements() {
     return data.map((item, index) => (
-      <ProductItem onEnter={id => console.log(id)} data={item} key={index} />
+      <div key={index}>
+        <ProductItem
+          onEnter={this.onItemEnter.bind(this)}
+          data={item}
+          key={index}
+        />
+      </div>
     ))
   }
 
+  beforeChange(newIndex, oldIndex) {
+    console.log(newIndex, oldIndex)
+    this.setState({
+      current: newIndex,
+      isAnimate: true,
+    })
+  }
+
+  afterChange() {
+    this.setState({
+      isAnimate: false,
+    })
+  }
+
   render() {
+    activeItem = this.state.activeItem
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />,
+      draggable: this.state.activeItem == null,
+      touchMove: this.state.activeItem == null,
+      accessibility: this.state.activeItem == null,
+      customPaging: i => {
+        return (
+          <span className={`${activeItem == null ? '' : 'hide'}`}>
+            0{i + 1} <div>0{data.length}</div>
+          </span>
+        )
+      },
+    }
     return (
       <div className="inner-page container">
-        <div className="product-navi">
+        <div className={`product-navi ${activeItem == null ? '' : 'active'}`}>
           <ul>
             <li className="active">
               <Link to="/">Пвх профили</Link>
@@ -65,7 +145,11 @@ class Products extends Component {
           </ul>
         </div>
         <div className="product-wrp">
-          <ProductList>{this.ProductElements()}</ProductList>
+          <div className="product-list">
+            <div className="product-container">
+              <Slider {...settings}>{this.ProductElements()}</Slider>
+            </div>
+          </div>
         </div>
       </div>
     )
