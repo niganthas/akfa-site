@@ -121,33 +121,35 @@ class Products extends Component {
       },
     }
     return (
-      <div className="inner-page container">
-        <div className={`product-navi ${activeItem == null ? '' : 'active'}`}>
-          <ul>
-            <li className="active">
-              <Link to="/">Пвх профили</Link>
-            </li>
-            <li>
-              <Link to="/">Алюминиевые профили</Link>
-            </li>
-            <li>
-              <Link to="/">Фасадные системы</Link>
-            </li>
-            <li>
-              <Link to="/">Радиаторы отопления</Link>
-            </li>
-            <li>
-              <Link to="/">Композитные панели</Link>
-            </li>
-            <li>
-              <Link to="/">Фурнитура и аксессуары</Link>
-            </li>
-          </ul>
-        </div>
-        <div className="product-wrp">
-          <div className="product-list">
-            <div className="product-container">
-              <Slider {...settings}>{this.ProductElements()}</Slider>
+      <div>
+        <div className="inner-page container">
+          <div className={`product-navi ${activeItem == null ? '' : 'active'}`}>
+            <ul>
+              <li className="active">
+                <Link to="/">Пвх профили</Link>
+              </li>
+              <li>
+                <Link to="/">Алюминиевые профили</Link>
+              </li>
+              <li>
+                <Link to="/">Фасадные системы</Link>
+              </li>
+              <li>
+                <Link to="/">Радиаторы отопления</Link>
+              </li>
+              <li>
+                <Link to="/">Композитные панели</Link>
+              </li>
+              <li>
+                <Link to="/">Фурнитура и аксессуары</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="product-wrp">
+            <div className="product-list">
+              <div className="product-container">
+                <Slider {...settings}>{this.ProductElements()}</Slider>
+              </div>
             </div>
           </div>
         </div>
