@@ -5,6 +5,34 @@ import Slider from 'react-slick'
 import './style.scss'
 
 const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
+let active = false
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div
+      className={`${className} ${active == false ? '' : 'visible'}`}
+      style={{ ...style }}
+      onClick={onClick}
+    >
+      <i className="fa fa-4x fa-angle-left" />
+    </div>
+  )
+}
+
+function NextArrow(props) {
+  const { className, style, onClick } = props
+
+  return (
+    <div
+      className={`${className} ${active == false ? '' : 'visible'}`}
+      style={{ ...style }}
+      onClick={onClick}
+    >
+      <i className="fa fa-4x fa-angle-right" />
+    </div>
+  )
+}
 
 class ProductItem extends Component {
   constructor(props) {
@@ -23,18 +51,18 @@ class ProductItem extends Component {
   onEnterHandler(id) {
     this.setState({ active: !this.state.active })
     this.props.onEnter(id)
+    active = !active
   }
 
   render() {
     const { id, title, desc } = this.props.data
-
     const settings = {
-      dots: false,
       infinite: true,
-      arrows: false,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />,
     }
 
     return (
@@ -98,13 +126,10 @@ class ProductItem extends Component {
                 <img src={pathPrefix + '/img/profile.png'} alt="" />
               </div>
               <div className="img-product">
-                <img src={pathPrefix + '/img/profile.png'} alt="" />
+                <img src={pathPrefix + '/img/profile2.png'} alt="" />
               </div>
               <div className="img-product">
-                <img src={pathPrefix + '/img/profile.png'} alt="" />
-              </div>
-              <div className="img-product">
-                <img src={pathPrefix + '/img/profile.png'} alt="" />
+                <img src={pathPrefix + '/img/profile3.png'} alt="" />
               </div>
             </Slider>
           </div>
